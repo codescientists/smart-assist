@@ -2,7 +2,7 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
 const isDashboardRoute = createRouteMatcher(['/dashboard(.*)']);
 const isAdminRoute = createRouteMatcher(['/admin(.*)']);
-const isWebhookRoute = createRouteMatcher(['/api/webhook(.*)']);
+// const isWebhookRoute = createRouteMatcher(['/api/webhook(.*)']);
 
 export default clerkMiddleware((auth, req) => {
   // Restrict admin route to users with specific role
@@ -12,7 +12,7 @@ export default clerkMiddleware((auth, req) => {
   if (isDashboardRoute(req)) auth().protect();
 
   // Restricting webhooks
-  if (isWebhookRoute(req)) auth().protect();
+  // if (isWebhookRoute(req)) auth().protect();
 });
 
 export const config = {
