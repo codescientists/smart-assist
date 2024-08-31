@@ -1,7 +1,6 @@
 "use client"
 
-import { AlignJustifyIcon, BotIcon, HousePlugIcon } from "lucide-react";
-// import { Input } from "../ui/input"
+import { AlignJustifyIcon, BotIcon } from "lucide-react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ScrollArea } from "../ui/scroll-area";
@@ -11,8 +10,6 @@ import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 
 
 const Header = () => {
-  // const [searchTerm, setSearchTerm] = useState('')
-
   const [isOpen, setisOpen] = useState(false);
 
   return (
@@ -23,7 +20,7 @@ const Header = () => {
         <SheetTrigger onClick={() => setisOpen(true)} className="lg:hidden flex items-center justify-center h-10 w-10  mx-2 rounded-sm">
           <AlignJustifyIcon />
         </SheetTrigger>
-        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <BotIcon className="mr-2 text-blue-700" /> SmartAssist</Link>
+        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <BotIcon className="mr-2 text-indigo-700" /> SmartAssist</Link>
 
       </div>
       
@@ -31,20 +28,20 @@ const Header = () => {
         <ul className="hidden md:flex space-x-6 font-semibold">
           <SignedIn>
             <li>
-                <Link href={`/chatbots`} className="transition hover:text-blue-700">Chatbots</Link>
+                <Link href={`/chatbots`} className="transition hover:text-indigo-700">Chatbots</Link>
             </li>
           </SignedIn>
           <li>
-              <Link href={`/`} className="transition hover:text-blue-700">Features</Link>
+              <Link href={`/`} className="transition hover:text-indigo-700">Features</Link>
           </li>
           <li>
-              <Link href={`/demo`} className="transition hover:text-blue-700">Demo</Link>
+              <Link href={`/`} className="transition hover:text-indigo-700">Demo</Link>
           </li>
           <li>
-              <Link href={`/`} className="transition hover:text-blue-700">Pricing</Link>
+              <Link href={`/`} className="transition hover:text-indigo-700">Pricing</Link>
           </li>
           <li>
-              <Link href={`/`} className="transition hover:text-blue-700">Blog</Link>
+              <Link href={`/`} className="transition hover:text-indigo-700">Blog</Link>
           </li>
         </ul>
       </nav>
@@ -61,25 +58,25 @@ const Header = () => {
 
       {/* RESPONSIVENESS */}
           <SheetContent side="left" >
-        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <BotIcon className="mr-2 text-blue-700" /> SmartAssist</Link>
+        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <BotIcon className="mr-2 text-indigo-700" /> SmartAssist</Link>
               <ScrollArea className="h-screen w-full">
                   <ul className="flex flex-col items-start justify-start space-y-3 my-5">
                       <SignedIn>
                         <li>
-                            <Link href={`/chatbots`} className="transition hover:text-blue-700">Chatbots</Link>
+                            <Link href={`/chatbots`} className="transition hover:text-indigo-700">Chatbots</Link>
                         </li>
                       </SignedIn>
                       <li>
-                          <Link href={`/`} className="transition hover:text-blue-700">Features</Link>
+                          <Link href={`/`} className="transition hover:text-indigo-700">Features</Link>
                       </li>
                       <li>
-                          <Link href={`/demo`} className="transition hover:text-blue-700">Demo</Link>
+                          <Link href={`/demo`} className="transition hover:text-indigo-700">Demo</Link>
                       </li>
                       <li>
-                          <Link href={`/`} className="transition hover:text-blue-700">Pricing</Link>
+                          <Link href={`/`} className="transition hover:text-indigo-700">Pricing</Link>
                       </li>
                       <li>
-                          <Link href={`/`} className="transition hover:text-blue-700">Blog</Link>
+                          <Link href={`/`} className="transition hover:text-indigo-700">Blog</Link>
                       </li>
                   </ul>
               </ScrollArea>

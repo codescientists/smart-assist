@@ -110,7 +110,7 @@ const ChatWidget = ({ chatBotId, chatbot }: any) => {
       {/* Chat Box */}
       {isOpen && (
         <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-3 max-w-xl w-full">
-          <div style={{background: chatbot?.color }} className="p-4 bg-blue-600 text-white flex items-center justify-between">
+          <div style={{background: chatbot?.color }} className="p-4 bg-indigo-600 text-white flex items-center justify-between">
             <div className="flex flex-col items-start">
               <h4 className="font-bold">{chatbot?.name}</h4>
               <p className="text-xs">{chatbot?.description}</p>
@@ -152,7 +152,7 @@ const ChatWidget = ({ chatBotId, chatbot }: any) => {
               <button
                 onClick={handleSaveUser}
                 style={{background: chatbot?.color }}
-                className="bg-blue-600 text-white rounded w-12 h-10 flex items-center justify-center"
+                className="bg-indigo-600 text-white rounded w-12 h-10 flex items-center justify-center"
               >
                 <SendHorizonalIcon className="h-4 w-4" />
               </button>
@@ -169,7 +169,7 @@ const ChatWidget = ({ chatBotId, chatbot }: any) => {
               <button
                 onClick={handleSendMessage}
                 style={{background: chatbot?.color }}
-                className="bg-blue-600 text-white rounded w-12 h-10 flex items-center justify-center"
+                className="bg-indigo-600 text-white rounded w-12 h-10 flex items-center justify-center"
               >
                 <SendHorizonalIcon className="h-4 w-4" />
               </button>
@@ -179,7 +179,7 @@ const ChatWidget = ({ chatBotId, chatbot }: any) => {
       )}
       <button
           style={{background: chatbot?.color }}
-          className="bg-blue-600 text-white h-14 w-28 flex items-center justify-center rounded-full shadow-lg mt-4"
+          className="bg-indigo-600 text-white h-14 w-28 flex items-center justify-center rounded-full shadow-lg mt-4"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <XIcon /> : <BotMessageSquare />}

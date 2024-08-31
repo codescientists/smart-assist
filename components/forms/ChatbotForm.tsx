@@ -188,7 +188,7 @@ const ChatbotForm = ({ type, chatbot, chatbotId, userId } : ChatbotFormProps) =>
           <div className="col-span-12 md:col-span-6 mt-6 flex flex-col items-center justify-start">
             <h2 className="text-xl font-bold">Preview</h2>
             <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-3 w-72 md:w-80">
-              <div style={{background: form.getValues("color")}} className="p-4 bg-blue-600 text-white flex items-center justify-between">
+              <div style={{background: form.getValues("color")}} className="p-4 bg-indigo-600 text-white flex items-center justify-between">
                 <div className="flex flex-col items-start">
                   <h4 className="font-bold">{form.getValues("name")}</h4>
                   <p className="text-xs">{form.getValues("description")}</p>
@@ -201,14 +201,14 @@ const ChatbotForm = ({ type, chatbot, chatbotId, userId } : ChatbotFormProps) =>
               </div>
               <div className="p-4 h-64 overflow-y-auto">
                 <div className="flex items-center justify-center">
-                  <BotIcon className="h-16 w-16 text-blue-600 text-center"/>
+                  <BotIcon className="h-16 w-16 text-indigo-600 text-center"/>
                 </div>
                 <div
                   className={`flex justify-start`}
                 >
                   <div
                     style={{background: form.getValues("color")}}
-                    className={`bg-blue-600 text-white p-2 rounded-lg mb-2 max-w-xs`}
+                    className={`bg-indigo-600 text-white p-2 rounded-lg mb-2 max-w-xs`}
                   >
                     How can I help you?
                   </div>
@@ -231,7 +231,7 @@ const ChatbotForm = ({ type, chatbot, chatbotId, userId } : ChatbotFormProps) =>
                 />
                 <button
                   style={{background: form.getValues("color")}}
-                  className={`bg-blue-600 text-white rounded w-12 h-10 flex items-center justify-center`}
+                  className={`bg-indigo-600 text-white rounded w-12 h-10 flex items-center justify-center`}
                 >
                   <SendHorizonalIcon className="h-4 w-4" />
                 </button>

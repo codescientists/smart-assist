@@ -52,7 +52,7 @@ const Sessions = ({params: { id }}: {params: { id: string }}) => {
       {/* Main Chat Area */}
       <div className="col-span-6 flex items-center justify-center"> 
         <div className="bg-white shadow-lg rounded-lg overflow-hidden mt-3 w-96">
-          <div style={{background: chatbot?.color}} className="p-4 bg-blue-600 text-white flex items-center justify-between">
+          <div style={{background: chatbot?.color}} className="p-4 bg-indigo-600 text-white flex items-center justify-between">
             <div>
               {selectedSession 
                 ? `Chat with ${sessions.find((s:any) => s._id === selectedSession)?.user?.name || 'Unknown User'}` 
