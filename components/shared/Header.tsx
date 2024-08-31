@@ -1,6 +1,6 @@
 "use client"
 
-import { AlignJustifyIcon, HousePlugIcon } from "lucide-react";
+import { AlignJustifyIcon, BotIcon, HousePlugIcon } from "lucide-react";
 // import { Input } from "../ui/input"
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -16,31 +16,36 @@ const Header = () => {
   const [isOpen, setisOpen] = useState(false);
 
   return (
-    <header className="flex items-center justify-between py-5 shadow-md px-2 md:px-8 xl:px-32">
+    <header className="flex items-center justify-between py-5 border-b-2 bg-[rgba(255,255,255,0.5)] px-2 md:px-8 xl:px-32">
       <Sheet open={isOpen} onOpenChange={setisOpen}>
           
       <div className="flex items-center">
         <SheetTrigger onClick={() => setisOpen(true)} className="lg:hidden flex items-center justify-center h-10 w-10  mx-2 rounded-sm">
           <AlignJustifyIcon />
         </SheetTrigger>
-        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <HousePlugIcon className="mr-2 text-blue-700" /> HomeShine</Link>
+        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <BotIcon className="mr-2 text-blue-700" /> SmartAssist</Link>
 
       </div>
       
       <nav>
         <ul className="hidden md:flex space-x-6 font-semibold">
+          <SignedIn>
             <li>
-                <Link href={`/`} className="transition hover:text-blue-700">Home</Link>
+                <Link href={`/chatbots`} className="transition hover:text-blue-700">Chatbots</Link>
             </li>
-            <li>
-                <Link href={`/`} className="transition hover:text-blue-700">Services</Link>
-            </li>
-            <li>
-                <Link href={`/`} className="transition hover:text-blue-700">Pages</Link>
-            </li>
-            <li>
-                <Link href={`/`} className="transition hover:text-blue-700">Contacts</Link>
-            </li>
+          </SignedIn>
+          <li>
+              <Link href={`/`} className="transition hover:text-blue-700">Features</Link>
+          </li>
+          <li>
+              <Link href={`/demo`} className="transition hover:text-blue-700">Demo</Link>
+          </li>
+          <li>
+              <Link href={`/`} className="transition hover:text-blue-700">Pricing</Link>
+          </li>
+          <li>
+              <Link href={`/`} className="transition hover:text-blue-700">Blog</Link>
+          </li>
         </ul>
       </nav>
 
@@ -48,55 +53,34 @@ const Header = () => {
         <UserButton />
       </SignedIn>
       <SignedOut>
-        <SignInButton />
+        <SignInButton>
+            <button className="flex items-center justify-center text-white bg-indigo-500 border-0 py-2 px-4 font-medium focus:outline-none hover:bg-indigo-600 rounded text-md">Sign In</button>
+        </SignInButton>
       </SignedOut>
-
-      {/* <div className="hidden lg:flex items-center rounded-full border border-slate-400 px-2 mr-4 ml-6">
-        <SearchIcon className="text-slate-400 h-5 w-5"/>
-        <Input placeholder="Search Products..." value={searchTerm} className="lg:w-[300px] bg-transparent border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 " />
-      </div> */}
 
 
       {/* RESPONSIVENESS */}
           <SheetContent side="left" >
-              {/* <div className="flex items-center rounded-full border border-slate-400 px-2 mr-4">
-                <SearchIcon className="text-slate-400 h-5 w-5"/>
-                <Input 
-                  placeholder="Search Products..." 
-                  value={searchTerm} 
-                  className="lg:w-[300px] bg-transparent border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 " 
-                  />
-              </div> */}
+        <Link href={`/`} className="font-semibold italic text-lg flex items-center md:text-xl"> <BotIcon className="mr-2 text-blue-700" /> SmartAssist</Link>
               <ScrollArea className="h-screen w-full">
                   <ul className="flex flex-col items-start justify-start space-y-3 my-5">
-                      {/* <li>
-                        <NavLink href={`/`} onClick={() => setisOpen(false)} className={({ isActive }) =>
-                                isActive ? "bg-blue-100 flex items-center py-1 px-2 rounded-md" : "flex items-center py-1 px-2 rounded-md hover:bg-gray-100"
-                        }>
-                            Home
-                        </NavLink>
+                      <SignedIn>
+                        <li>
+                            <Link href={`/chatbots`} className="transition hover:text-blue-700">Chatbots</Link>
+                        </li>
+                      </SignedIn>
+                      <li>
+                          <Link href={`/`} className="transition hover:text-blue-700">Features</Link>
                       </li>
                       <li>
-                        <NavLink href={`/shop`} onClick={() => setisOpen(false)} className={({ isActive }) =>
-                                isActive ? "bg-blue-100 flex items-center py-1 px-2 rounded-md" : "flex items-center py-1 px-2 rounded-md hover:bg-gray-100"
-                        }>
-                            Services
-                        </NavLink>
+                          <Link href={`/demo`} className="transition hover:text-blue-700">Demo</Link>
                       </li>
                       <li>
-                        <NavLink href={`/services`} onClick={() => setisOpen(false)} className={({ isActive }) =>
-                                isActive ? "bg-blue-100 flex items-center py-1 px-2 rounded-md" : "flex items-center py-1 px-2 rounded-md hover:bg-gray-100"
-                        }>
-                            Pages
-                        </NavLink>
+                          <Link href={`/`} className="transition hover:text-blue-700">Pricing</Link>
                       </li>
                       <li>
-                        <NavLink href={`/stores`} onClick={() => setisOpen(false)} className={({ isActive }) =>
-                                isActive ? "bg-blue-100 flex items-center py-1 px-2 rounded-md" : "flex items-center py-1 px-2 rounded-md hover:bg-gray-100"
-                        }>
-                            Contact
-                        </NavLink>
-                      </li> */}
+                          <Link href={`/`} className="transition hover:text-blue-700">Blog</Link>
+                      </li>
                   </ul>
               </ScrollArea>
           </SheetContent>

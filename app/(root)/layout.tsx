@@ -8,7 +8,7 @@ export default function Layout({
   return (
       <>
         <Header />
-        <section className="h-screen flex flex-col items-center justify-center">{children}</section>
+        <section>{children}</section>
       </>
   )
 }

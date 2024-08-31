@@ -1,3 +1,4 @@
+import Session from "@/lib/database/models/session.model";
 import { NextRequest, NextResponse } from "next/server";
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -7,23 +8,15 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 
-export async function GET(request: NextRequest) {
-  // const { chat_session_id, chatbot_id, content, name } = await request.json();
+export async function POST(request: NextRequest) {
+  const { message, name, shopDetails, chats, sessionId } = await request.json();
 
-  console.log("RECIEVED MESSAGE");
+  const prevHistory = chats.map((chat: any) => ({
+    role: chat.sender == "bot" ? "model" : "user",
+    parts: [{ text: chat.message }],
+  }));
 
   try {
-
-    // const completion = await openai.chat.completions.create({
-    //   messages: [{ role: "system", content: "You are a helpful assistant of CodeScientist App that provide courses of all programming languages for free." }],
-    //   model: "gpt-3.5-turbo",
-    // });
-
-    const name = "Piyush"
-  
-    const shopDetails = `
-      My shop name is Gada Electronics. Address of my shop is Andheri East, Mumbai. Phone number of my shop is 123 234 2123. Website address is gadaelectronics.com. We are offering 20% discount on each products between 06 August to 18 August as an independence day sale.
-    `;
 
     const chat = model.startChat({
       generationConfig: {
@@ -32,17 +25,34 @@ export async function GET(request: NextRequest) {
       },    
       history: [
         {
-            role: "user",
-            parts: [{ text: `You are a helpful assistant talking to ${name}. If a generic question is asked which is not relevant or in the same scope or domain as the points in mentioned in the key information section, kindly inform the user they are only allowed to search for the specified content. Use Emoji's where possible. Here is some key information that you need to be aware of, these are elements you may be asked about: ${shopDetails}` }]
+            role: "user", 
+            parts: [{ text: `You are a helpful assistant talking to customer. If a generic question is asked which is not relevant or in the same scope or domain as the points in mentioned in the key information section, kindly inform the user they are only allowed to search for the specified content. Use Emoji's where possible. Here is some key information that you need to be aware of, these are elements you may be asked about: ${shopDetails}` }]
         },
+        ...prevHistory
       ]
     });
 
-    let result = await chat.sendMessage("Is there any sale available?");
-    console.log(result.response.text()); 
+    let result = await chat.sendMessage(message);
+
+    const botMessage = { sender: 'bot', message: result.response.text(), timestamp: new Date() };
+
+    const latestChats = [
+      chats[chats.length - 1],
+      botMessage
+    ]
+
+    // Save chat conversation
+    const session = await Session.findOneAndUpdate(
+      { _id: sessionId },
+      {
+        $push: { chats: { $each: latestChats } }, // Append the new chats
+      }
+    );
+
+    if (!session) return NextResponse.json({ error: 'chat did not updated' }, { status: 404 });
 
     return NextResponse.json({
-      data: result,
+      data: result.response.text(),
     })
   
     

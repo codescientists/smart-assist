@@ -1,18 +1,14 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-const isDashboardRoute = createRouteMatcher(['/dashboard(.*)']);
+const isChatbotRoute = createRouteMatcher(['/chatbots(.*)']);
 const isAdminRoute = createRouteMatcher(['/admin(.*)']);
-// const isWebhookRoute = createRouteMatcher(['/api/webhook(.*)']);
 
 export default clerkMiddleware((auth, req) => {
   // Restrict admin route to users with specific role
   if (isAdminRoute(req)) auth().protect({ role: 'org:admin' });
 
   // Restrict dashboard routes to signed in users
-  if (isDashboardRoute(req)) auth().protect();
-
-  // Restricting webhooks
-  // if (isWebhookRoute(req)) auth().protect();
+  if (isChatbotRoute(req)) auth().protect();
 });
 
 export const config = {
