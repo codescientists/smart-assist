@@ -2,7 +2,8 @@
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { getChatBotByIdWithSessions, updateChatBot } from '@/lib/actions/chatbot.actions';
+import { getChatBotById, updateChatBot } from '@/lib/actions/chatbot.actions';
+import { getSessionsByChatbotId } from '@/lib/actions/session.actions';
 import { ArrowRight, PenBoxIcon } from 'lucide-react';
 import Link from 'next/link';
 
@@ -19,10 +20,11 @@ const ChatbotDetails = ({params: { id }}: {params: { id: string }}) => {
 
   useEffect(() => {
     const getChatBot = async () => {
-      const data = await getChatBotByIdWithSessions(id);
+      const data = await getChatBotById(id);
       setMessage(data?.predefinedInformation);
       setChatbot(data);
-      setSessions(data?.sessions);
+      const sessions = await getSessionsByChatbotId(id)
+      setSessions(sessions);
     }
     getChatBot()
   }, [])
@@ -73,7 +75,7 @@ const ChatbotDetails = ({params: { id }}: {params: { id: string }}) => {
             </Link>
           </div>
           <ul className="h-fit">
-            {sessions?.slice(Math.max(sessions.length - 4, -1))?.reverse()?.map((session:any) => (
+            {sessions?.slice(0, 4)?.map((session:any) => (
               <li 
                 key={session._id} 
                 className={`p-4 cursor-pointer hover:bg-gray-200`}

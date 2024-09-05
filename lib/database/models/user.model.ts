@@ -6,7 +6,7 @@ const UserSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     createdAt: { type: Date, default: Date.now },
-    bots: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bot' }],   
+    bots: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ChatBot' }],   
 })
 
 const User = models.User || model('User', UserSchema);

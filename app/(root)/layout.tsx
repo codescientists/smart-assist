@@ -7,10 +7,10 @@ export default function Layout({
   children: React.ReactNode
 }) {
   return (
-      <>
+      <section>
         <Header />
-        <section>{children}</section>
+        <section className="min-h-screen">{children}</section>
         <Footer />
-      </>
+      </section>
   )
 }

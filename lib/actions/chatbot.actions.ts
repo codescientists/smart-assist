@@ -66,20 +66,6 @@ export async function getChatBotById(chatBotId:string | undefined) {
       }
 }
 
-export async function getChatBotByIdWithSessions(chatBotId:string | undefined) {
-      try {
-        await connectToDatabase()
-
-        console.log("CONNECTED")
-    
-        const chatbot = await ChatBot.findById(chatBotId).populate('sessions');
-        console.log(chatbot)
-        
-        return JSON.parse(JSON.stringify(chatbot))
-      } catch (error) {
-        handleError(error)
-      }
-}
 
 
 export async function getAllChatbots() {

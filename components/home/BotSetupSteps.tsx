@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignUpButton } from '@clerk/nextjs';
+import { SignedOut, SignUpButton } from '@clerk/nextjs';
 import React from 'react';
 
 const BotSetupSteps = () => {
@@ -36,9 +36,6 @@ const BotSetupSteps = () => {
         ))}
       </div>
       <div className="flex items-center justify-center w-full">
-        <SignedIn>
-        
-        </SignedIn>
         <SignedOut>
           <SignUpButton>
           <button className="mt-6 flex items-center justify-center text-white bg-indigo-500 border-0 py-3 px-10 focus:outline-none hover:bg-indigo-600 rounded-full shadow-xl shadow-indigo-300 hover:shadow-indigo-200 transition text-lg">Get Started Now! </button>
